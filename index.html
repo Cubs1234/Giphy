@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Animal Buttons</title>
+  </head>
+
+  <body>
+      <H1>Giphy Animal Bigtop</H1>
+
+    <div id="buttons-view"></div>
+    
+    <form id="animal-form">
+            <label for="animal-input">Add an Animal</label>
+            <input type="text" id="animal-input" />
+            <br></br>
+            <input id="add-animal" type="submit" value="Submit" />
+            <br></br>
+    </form>
+    <br>
+    <button data-animal="cat">Cats</button>
+    <button data-animal="dog">Dogs</button>
+    <button data-animal="bird">Birds</button>
+    <button data-animal="alligator">Alligator</button>
+    <button data-animal="giraffe">Giraffe</button>
+    <button data-animal="lion">Lion</button>
+
+    <br></br>
+
+
+    <div id="gifs-appear-here"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      
+      $("button").on("click", function() {
+        // Grabbing and storing the data-animal property value from the button
+        var animal = $(this).attr("data-animal");
+
+        // Constructing a queryURL using the animal name
+        var queryURL =
+          "https://api.giphy.com/v1/gifs/search?q=" +
+          animal +
+          "&api_key=P7YxDY91VBWFQg7QdzMASqT0Fr3gZUot&limit=10";
+
+        // Performing an AJAX request with the queryURL
+        $.ajax({
+          url: queryURL,
+          method: "GET"
+        })
+          // After data comes back from the request
+          .then(function(response) {
+            console.log(queryURL);
+
+            console.log(response);
+            
+            var results = response.data;
+
+          
+            for (var i = 0; i < results.length; i++) {
+              
+              var animalDiv = $("<div>");
+
+              
+              var p = $("<p>").text("Rating: " + results[i].rating);
+
+              
+              var animalImage = $("<img>");
+             
+              animalImage.attr("src", results[i].images.fixed_height.url);
+
+             
+              animalDiv.append(p);
+              animalDiv.append(animalImage);
+
+             
+              $("#gifs-appear-here").prepend(animalDiv);
+            }
+          });
+      });
+    </script>
+    
+
+    <script>
+      $("add-animal").on("click", function() {
+        // Grabbing and storing the data-animal property value from the button
+        var response1 = $(this).attr("data-animal");
+
+        // Constructing a queryURL using the animal name
+        var queryURL =
+          "https://api.giphy.com/v1/gifs/search?q=" +
+          add-animal +
+          "&api_key=P7YxDY91VBWFQg7QdzMASqT0Fr3gZUot&limit=10";
+
+        // Performing an AJAX request with the queryURL
+        $.ajax({
+          url: queryURL,
+          method: "GET"
+        })
+          // After data comes back from the request
+          .then(function(response1) {
+            console.log(queryURL);
+
+            console.log(response1);
+            // storing the data from the AJAX request in the results variable
+            var response1 = response1.data;
+
+            // Looping through each result item
+            for (var i = 0; i < response1.length; i++) {
+              // Creating and storing a div tag
+              var response1 = $("<div>");
+
+              // Creating a paragraph tag with the result item's rating
+              var p = $("<p>").text("Rating: " + results(i).rating);
+
+              // Creating and storing an image tag
+              var animalImage = $("<img>");
+              // Setting the src attribute of the image to a property pulled off the result item
+              animalImage.attr("src", results[i].images.fixed_height.url);
+
+              // Appending the paragraph and image tag to the animalDiv
+              animal-input.append(p);
+              animal-input.append(animalImage);
+
+              // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
+              $("#gifs-appear-here").prepend(response1);
+            }
+          });
+      });
+    </script>
+  </body>
+</html>
