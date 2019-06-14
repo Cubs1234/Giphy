@@ -10,14 +10,26 @@
       <H1>Giphy Animal Bigtop</H1>
 
     <div id="buttons-view"></div>
+   
+
     
-    <form id="animal-form">
-            <label for="animal-input">Add an Animal</label>
-            <input type="text" id="animal-input" />
-            <br></br>
-            <input id="add-animal" type="submit" value="Submit" />
-            <br></br>
+    <!-- <form id="animal-form"> -->
+            <!-- <label for="animal-input">Add an Animal</label> -->
+            <!-- <input type="text" id="animal-input" /> -->
+            <!-- <br></br> -->
+            <!-- <input id="add-animal" type="submit" value="Submit" /> -->
+            <!-- <br></br> -->
     </form>
+    <p>
+      Animal: <input id ="Animal"></input>
+      <br/>
+      <br/>
+      <button id="submit">Submit</button>
+    </p>
+    
+    
+    
+    
     <br>
     <button data-animal="cat">Cats</button>
     <button data-animal="dog">Dogs</button>
@@ -89,7 +101,7 @@
         // Constructing a queryURL using the animal name
         var queryURL =
           "https://api.giphy.com/v1/gifs/search?q=" +
-          add-animal +
+          "add-animal".value +
           "&api_key=P7YxDY91VBWFQg7QdzMASqT0Fr3gZUot&limit=10";
 
         // Performing an AJAX request with the queryURL
